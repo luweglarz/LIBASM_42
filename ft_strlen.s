@@ -1,13 +1,15 @@
+
 ft_strlen:
 	mov rax, 0
-	mov rbx, rdi
 	jmp	count
 
+
 count : 
-	cmp rax, rbx
+	cmp rdi, 0
 	je ret;
+	inc rdi
 	inc rax
-	jmp count
+	jmp ret
 
 ret :
 	ret
