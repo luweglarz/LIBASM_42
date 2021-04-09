@@ -1,15 +1,17 @@
+global ft_strlen
 
 ft_strlen:
-	mov rax, 0
+	xor rcx, rcx
 	jmp	count
 
 
 count : 
-	cmp rdi, 0
+	cmp BYTE [rdi], 0
 	je ret;
 	inc rdi
-	inc rax
-	jmp ret
+	inc rcx
+	jmp count
 
 ret :
+	mov rax, rcx
 	ret
