@@ -1,10 +1,8 @@
 NAME = libasm.a
 
-SRCS = 		ft_strlen.s \
+SRCS = 	ft_strlen.s ft_strcpy.s \
 
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc -Wall -Wextra -Werror
 
 NASM = nasm -f elf64
 
@@ -16,7 +14,9 @@ OBJ = $(SRCS:.s=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+	$(CC) main.c $(NAME)
 
 clean :
 	rm -f $(OBJ)

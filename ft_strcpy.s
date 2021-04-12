@@ -1,27 +1,30 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_strlen.s                                        :+:      :+:    :+:    #
+#    ft_strcpy.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/09 16:48:20 by user42            #+#    #+#              #
-#    Updated: 2021/04/12 17:39:48 by user42           ###   ########.fr        #
+#    Created: 2021/04/09 16:48:18 by user42            #+#    #+#              #
+#    Updated: 2021/04/12 17:47:16 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-global ft_strlen
+global ft_strcpy
 
-ft_strlen:
-	xor rcx, rcx
+ft_strcpy:
+	push rdi
 
-count:
-	cmp byte [rdi], 0
-	je ret;
+loop:
+	cmp byte [rsi], 0
+	je ret
+	mov cl, byte [rsi]
+	mov byte [rdi], cl
 	inc rdi
-	inc rcx
-	jmp count
+	inc rsi
+	jmp loop	
 
-ret :
-	mov rax, rcx
+ret:
+	mov byte [rdi], 0
+	pop rax
 	ret

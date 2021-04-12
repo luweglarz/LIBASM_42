@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 13:27:46 by user42            #+#    #+#             */
-/*   Updated: 2021/04/09 13:28:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/09 16:29:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define LIBASM_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
-int	ft_strlen(char *);
+int		ft_strlen(char *);
+char	*ft_strcpy(char *, char *);
 
 #endif
