@@ -1,6 +1,6 @@
 NAME = libasm.a
 
-SRCS = 	ft_strlen.s ft_strcpy.s \
+SRCS = 	ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s \
 
 CC = gcc -Wall -Wextra -Werror
 
