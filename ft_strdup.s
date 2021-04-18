@@ -1,34 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_strcmp.s                                        :+:      :+:    :+:    #
+#    ft_strdup.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/12 16:22:02 by user42            #+#    #+#              #
-#    Updated: 2021/04/16 17:44:21 by user42           ###   ########.fr        #
+#    Created: 2021/04/13 23:24:37 by user42            #+#    #+#              #
+#    Updated: 2021/04/16 17:44:19 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-global ft_strcmp
+global    ft_strdup
+extern    malloc
+extern    ft_strlen
+extern    ft_strcpy
 
-ft_strcmp:
-	xor rcx, rcx
-loop:
-	mov al, byte [rdi + rcx]
-	mov bl, byte [rsi + rcx]
-	cmp al, 0
-	jz comp
-	cmp bl, 0
-	jz comp
-	cmp al, bl
-	jnz comp
-	inc rcx
-	jmp loop
-
-comp:
-	movzx rax, al
-	movzx rbx, bl
-	sub rax, rbx
-	ret
-	
+ft_strdup:
+	push rdi
+	call ft_strlen
+	add rax, 1
+	mov rdi, rax
+	call malloc
+	pop rsi
+	mov rdi, rax
+	jmp ft_strcpy

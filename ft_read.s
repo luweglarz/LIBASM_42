@@ -1,34 +1,35 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_strcmp.s                                        :+:      :+:    :+:    #
+#    ft_read.s                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/12 16:22:02 by user42            #+#    #+#              #
-#    Updated: 2021/04/16 17:44:21 by user42           ###   ########.fr        #
+#    Created: 2021/04/13 23:00:22 by user42            #+#    #+#              #
+#    Updated: 2021/04/18 22:17:32 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-global ft_strcmp
+global	ft_read
+extern __errno_location
 
-ft_strcmp:
-	xor rcx, rcx
-loop:
-	mov al, byte [rdi + rcx]
-	mov bl, byte [rsi + rcx]
-	cmp al, 0
-	jz comp
-	cmp bl, 0
-	jz comp
-	cmp al, bl
-	jnz comp
-	inc rcx
-	jmp loop
-
-comp:
-	movzx rax, al
-	movzx rbx, bl
-	sub rax, rbx
+ft_read:
+	cmp rbx,0
+	jl buff_error
+	mov rax, 0
+	syscall
+	cmp rax, 0
+	jl error
 	ret
-	
+
+buff_error:
+	mov rax, -1
+	ret
+
+error:
+	neg rax
+	mov rdi, rax
+	call __errno_location
+	mov [rax], rdi
+	mov rax, -1
+	ret
