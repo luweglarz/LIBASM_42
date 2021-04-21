@@ -16,7 +16,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@$(CC) -no-pie main.c $(NAME)
+	@$(CC) -fno-pie -no-pie main.c $(NAME)
 
 clean :
 	rm -f $(OBJ)

@@ -14,16 +14,22 @@ global	ft_write
 extern __errno_location
 
 ft_write:
+    cmp rbx, 0
+    jl count_error
 	mov rax, 1
 	syscall
 	cmp rax, 0
 	jl error
 	ret
 
+count_error:
+    mov rax, -1
+    ret
+
 error:
 	neg rax
-	mov rdi, rax
+	mov r9, rax
 	call __errno_location
-	mov [rax], rdi
+	mov [rax], r9
 	mov rax, -1
 	ret

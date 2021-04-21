@@ -28,8 +28,8 @@ buff_error:
 
 error:
 	neg rax
-	mov rdi, rax
+	mov r9, rax
 	call __errno_location
-	mov [rax], rdi
-	mov rax, -1
+	mov [rax], r9
+	mov rax, -1 
 	ret
