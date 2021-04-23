@@ -57,7 +57,7 @@ int main(void)
 	printf("||  ft_strcpy  ||\n");
 	printf("||_____________||\n\n");
 
-	char dst1[] = "    ";
+	char dst1[] = "";
 	char dst2[] = "Hello world";
 	char dst3[] = "Lorem Ipsum";
 	char dst4[] = "1&é'&47#~";
@@ -209,7 +209,7 @@ int main(void)
 	printf("buff: |%s|\n", buff);
 	ft_bzero(buff, buff_sizeplus);
 	printf("\n");
-
+/*
 	ret = ft_read(-1, buff, buff_sizeplus);
 	buff[ret] = '\0';
 	printf("ft_read2:\n");
@@ -244,7 +244,7 @@ int main(void)
 	printf("buff: |%s|\n", buff);
 	close(fd);
 	printf("\n");
-
+*/
 	printf("  _____________\n");
 	printf("//             \\\\\n");
 	printf("||  ft_strdup  ||\n");

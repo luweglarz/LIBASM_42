@@ -20,7 +20,7 @@ ft_strdup:
 	call ft_strlen
 	add rax, 1
 	mov rdi, rax
-	call malloc
-	pop rsi
+	call malloc wrt ..plt	
+    pop rsi
 	mov rdi, rax
 	jmp ft_strcpy
