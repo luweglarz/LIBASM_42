@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 16:48:27 by user42            #+#    #+#             */
-/*   Updated: 2021/04/18 22:28:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/04/24 20:55:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,16 +120,19 @@ int main(void)
 	
 	w_p.str = "test";
 	w_p.size = 5;
+	int retw = 0;
 
 	printf("str: |%s| size : |%ld|\n\n", w_p.str, w_p.size );
 	printf("ft_write:\n");
-	ft_write(1,w_p.str, w_p.size);
+	retw = ft_write(1,w_p.str, w_p.size);
 	printf("\n");
+	printf("retw: %d\n", retw);
 	printf("errno: %d\n", errno);
 	printf("\n");
 	printf("write:\n");
-	write(1,w_p.str, w_p.size);
+	retw = write(1,w_p.str, w_p.size);
 	printf("\n");
+	printf("retw: %d\n", retw);
 	printf("errno: %d\n", errno);
 
 	printf("_______________________\n\n");
@@ -139,45 +142,49 @@ int main(void)
 
 	printf("str: |%s| size : |%ld|\n\n", w_p.str, w_p.size );
 	printf("ft_write:\n");
-	ft_write(1,w_p.str, w_p.size);
+	retw = ft_write(1,w_p.str, w_p.size);
 	printf("\n");
+	printf("retw: %d\n", retw);
 	printf("errno: %d\n", errno);
 	printf("\n");
 	printf("write:\n");
-	write(1,w_p.str, w_p.size);
+	retw = write(1,w_p.str, w_p.size);
 	printf("\n");
+	printf("retw: %d\n", retw);
 	printf("errno: %d\n", errno);
 
 	printf("_______________________\n\n");
 
 	w_p.str = "hello world";
 	w_p.size = 12;
-
+	int fdw = open("test", O_WRONLY);
+	
 	printf("str: |%s| size : |%ld|\n\n", w_p.str, w_p.size);	
 	printf("ft_write:\n");
-	ft_write(1,w_p.str, w_p.size);
-	printf("\n");
+	retw = ft_write(fdw,w_p.str, w_p.size);
+	printf("retw: %d\n", retw);
 	printf("errno: %d\n", errno);
 	printf("\n");
 	printf("write:\n");
-	write(1,w_p.str, w_p.size);
-	printf("\n");
+	retw = write(fdw,w_p.str, w_p.size);
+	printf("retw: %d\n", retw);
 	printf("errno: %d\n", errno);
+	close(fdw);
 
 	printf("_______________________\n\n");
 
 	w_p.str = "abla";
-	w_p.size = 5;
+	w_p.size = -1;
 
 	printf("str: |%s| size : |%ld|\n\n", w_p.str, w_p.size);
-	printf("ft_write:");
-	ft_write(1,w_p.str, w_p.size);
-	printf("\n");
+	printf("ft_write:\n");
+    retw = ft_write(1,w_p.str, w_p.size);
+    printf("retw: %d\n", retw);
 	printf("errno: %d\n", errno);
 	printf("\n");
 	printf("write:\n");
-	write(1,w_p.str, w_p.size);
-	printf("\n");
+    retw = write(1,w_p.str, w_p.size);
+    printf("retw :%d\n", retw);
 	printf("errno: %d\n", errno);
 
 	printf("  _____________\n");
@@ -189,7 +196,7 @@ int main(void)
 	int 			fd;
 	ssize_t 		ret;
 
-	fd = open("test", O_RDONLY);
+	fd = open("testread", O_RDONLY);
 	ret = ft_read(fd, buff, buff_sizeplus);
 	buff[ret] = '\0';
 	printf("ft_read1:\n");
@@ -200,7 +207,7 @@ int main(void)
 	ft_bzero(buff, buff_sizeplus);
 	printf("\n");
 
-	fd = open("test", O_RDONLY);
+	fd = open("testread", O_RDONLY);
 	ret = read(fd, buff, buff_sizeplus);
 	buff[ret] = '\0';
 	printf("read1:\n");
@@ -228,7 +235,7 @@ int main(void)
 	ft_bzero(buff, buff_sizeplus);
 	printf("\n");
 
-	ret = ft_read(fd, buff, -32);
+	ret = ft_read(fd, buff, buff_sizeminus);
 	buff[ret] = '\0';
 	printf("ft_read3:\n");
 	printf("errno: %d\n", errno);
