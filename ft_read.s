@@ -14,8 +14,8 @@ global	ft_read
 extern __errno_location
 
 ft_read:
-	cmp rbx,0
-	jl buff_error
+    cmp rbx, 0
+    jl buff_error
 	mov rax, 0
 	syscall
 	cmp rax, 0
@@ -29,7 +29,7 @@ buff_error:
 error:
 	neg rax
 	mov r9, rax
-	call __errno_location
-	mov [rax], r9
+	call __errno_location wrt ..plt	
+    mov [rax], r9
 	mov rax, -1 
 	ret
