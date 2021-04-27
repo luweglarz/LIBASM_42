@@ -119,7 +119,7 @@ int main(void)
 	t_write_params w_p;
 	
 	w_p.str = "test";
-	w_p.size = 5;
+	w_p.size = 4;
 	int retw = 0;
 
 	printf("str: |%s| size : |%ld|\n\n", w_p.str, w_p.size );
@@ -138,7 +138,7 @@ int main(void)
 	printf("_______________________\n\n");
 
 	w_p.str = "salut";
-	w_p.size = 6;
+	w_p.size = 5;
 
 	printf("str: |%s| size : |%ld|\n\n", w_p.str, w_p.size );
 	printf("ft_write:\n");
@@ -156,7 +156,7 @@ int main(void)
 	printf("_______________________\n\n");
 
 	w_p.str = "hello world";
-	w_p.size = 12;
+	w_p.size = 11;
 	int fdw = open("test", O_WRONLY);
 	
 	printf("str: |%s| size : |%ld|\n\n", w_p.str, w_p.size);	
